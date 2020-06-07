@@ -1,0 +1,74 @@
+<samlp:Response ID="_52fd5ac0-7d48-4dd5-a60a-d6c5959f0d9e" Version="2.0" IssueInstant="2020-06-07T14:29:25.755Z" Destination="https://127.0.0.1:5000/app/login/callback" InResponseTo="_6b2041a4ca7496450e39" 
+    xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol">
+    <Issuer xmlns="urn:oasis:names:tc:SAML:2.0:assertion">https://sts.windows.net/c643d250-0dd7-416f-889e-a93f0e4ef800/</Issuer>
+    <samlp:Status>
+        <samlp:StatusCode Value="urn:oasis:names:tc:SAML:2.0:status:Success"/>
+    </samlp:Status>
+    <Assertion ID="_f2821b3a-6c47-41c1-8993-7028be023a00" IssueInstant="2020-06-07T14:29:25.739Z" Version="2.0" 
+        xmlns="urn:oasis:names:tc:SAML:2.0:assertion">
+        <Issuer>https://sts.windows.net/c643d250-0dd7-416f-889e-a93f0e4ef800/</Issuer>
+        <Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
+            <SignedInfo>
+                <CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/>
+                <SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha256"/>
+                <Reference URI="#_f2821b3a-6c47-41c1-8993-7028be023a00">
+                    <Transforms>
+                        <Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/>
+                        <Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/>
+                    </Transforms>
+                    <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/>
+                    <DigestValue>nTOdBn01jKCOYnuApaaMy020C59hmANvdZrLNTObWmg=</DigestValue>
+                </Reference>
+            </SignedInfo>
+            <SignatureValue>fvcrDMDKJT8UFWzg+4ubAEx1cxuEdSmY9rrB0zBoVTI2GceyAwwN4erk4Tp7TLCSj0fnzy81ihxSMBsY4dSpbShpeqmrbwvbPQh5btVKlhpb8MvpcJYOESpMnMLzlx2FFHgIPE8LkwmKUaiPx5UcXr4yrLo+73GXtOFQKaZV7OCEIjOGUYL6rvGZ/B9jAfLBEbixppfZOUyr5OHgORVuqpe9Q5u43Ll16+bzEzCXczWtl/b6fZfWbgjvNWXocTIUsf9L73ILxLCHIrKluoAYxpMHKdJlLa4C09MSn9fp0hrw9GymI8AVTCU7Idu+CuNvSKT3cEQrWPpJ4AUIz27jCA==</SignatureValue>
+            <KeyInfo>
+                <X509Data>
+                    <X509Certificate>MIIC8DCCAdigAwIBAgIQWMoDxxcTBqxCCi4n3yQspTANBgkqhkiG9w0BAQsFADA0MTIwMAYDVQQDEylNaWNyb3NvZnQgQXp1cmUgRmVkZXJhdGVkIFNTTyBDZXJ0aWZpY2F0ZTAeFw0yMDA2MDMxODAyMzhaFw0yMzA2MDMxODAyMzhaMDQxMjAwBgNVBAMTKU1pY3Jvc29mdCBBenVyZSBGZWRlcmF0ZWQgU1NPIENlcnRpZmljYXRlMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAsQbCRN2kJwogfH/+GZwyBHY1qwx0Z6jGgtSF09iKgc3lsrs/dSrEWCrsEcBRjz5GUTcnXIjNybtU7DF7h9s23KAs/7JhTQKNjOU1XWHARRKokBt7U9Zm1ojxBQ4pfEzafl3tyjkXMjj7h5wU3sFkLD6OBj5UjSwFflISw8QuRrIWIdwVkzkMvo9JoV3jLlfZKeimbBRnjYF/r41i+b9JkWp5Yd5N95B3bPc31nX2tZckUSHbi0Hx6NdS2BvI3v4EthBQ9KXAbXjjRA3B1Npgz/epN90AYOX6ceOMWxJDSGn+5KMz8SV921MhMBQpWH9jh9pUc0Au1oPADGiOnk2MkQIDAQABMA0GCSqGSIb3DQEBCwUAA4IBAQBQ4hOfY/ffKI6YdPKy3dhdX1Zm+9y41kvZACCjtpG9LgAEzlLeh+Rm3A/smntbYbu8YWlC1hqgewSWdmtzcy1hXj043ApuKv91iRlmAnnfuYjqlXR1vNetREkpr8MlssteLtJHnZGZ3YA3Q1/BNG4SdKKg3dJwNx9t547Eic2n8Q03onXQCCx1iKDSWA5mh73X4D9udv/XHc/pIvk13fciGceCNAENi6ro3GPpADi5SyKXc8lyUfUtuKGwuEiD/vlBiDfKrG9rY9ytG+M0C/8+o0nBiWEYyGUwEv7nNxhU01RKOBNhqdao9BFboqa2Ut61cfiPqiWWNFySLNaaUxXV</X509Certificate>
+                </X509Data>
+            </KeyInfo>
+        </Signature>
+        <Subject>
+            <NameID Format="urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress">dimplearora@raspbians.com</NameID>
+            <SubjectConfirmation Method="urn:oasis:names:tc:SAML:2.0:cm:bearer">
+                <SubjectConfirmationData InResponseTo="_6b2041a4ca7496450e39" NotOnOrAfter="2020-06-07T15:29:25.552Z" Recipient="https://127.0.0.1:5000/app/login/callback"/>
+            </SubjectConfirmation>
+        </Subject>
+        <Conditions NotBefore="2020-06-07T14:24:25.552Z" NotOnOrAfter="2020-06-07T15:29:25.552Z">
+            <AudienceRestriction>
+                <Audience>spn:27757783-5217-479e-b2f6-5e7b2b98d652</Audience>
+            </AudienceRestriction>
+        </Conditions>
+        <AttributeStatement>
+            <Attribute Name="http://schemas.microsoft.com/identity/claims/tenantid">
+                <AttributeValue>c643d250-0dd7-416f-889e-a93f0e4ef800</AttributeValue>
+            </Attribute>
+            <Attribute Name="http://schemas.microsoft.com/identity/claims/objectidentifier">
+                <AttributeValue>a0c2f399-bb9f-4465-918a-adb7788e4239</AttributeValue>
+            </Attribute>
+            <Attribute Name="http://schemas.microsoft.com/ws/2008/06/identity/claims/groups">
+                <AttributeValue>14b82763-0354-47d0-9b36-7cbee439908c</AttributeValue>
+                <AttributeValue>7ab23811-6b69-4a3f-9950-457696416b5c</AttributeValue>
+                <AttributeValue>3f233ee1-09af-45e9-bb0a-c22724338f40</AttributeValue>
+                <AttributeValue>ddd83184-b457-406b-ad45-3d83abd5908b</AttributeValue>
+                <AttributeValue>d2886147-8441-4b80-bc57-9b51a436b6df</AttributeValue>
+                <AttributeValue>65d03182-5b69-40f2-bd3c-eba93df4610b</AttributeValue>
+                <AttributeValue>16ac806b-45ac-41e4-86d3-46645a30adda</AttributeValue>
+                <AttributeValue>7ac31935-8442-44e3-9757-f45c2ea46550</AttributeValue>
+                <AttributeValue>dcbe50b2-3f80-4f1a-bd0c-c6e756bf3bab</AttributeValue>
+                <AttributeValue>92b879b2-23ab-4001-84c7-9f4c6b455696</AttributeValue>
+                <AttributeValue>f10ec9e5-c106-49d2-9469-c840167064d4</AttributeValue>
+            </Attribute>
+            <Attribute Name="http://schemas.microsoft.com/identity/claims/identityprovider">
+                <AttributeValue>https://sts.windows.net/c643d250-0dd7-416f-889e-a93f0e4ef800/</AttributeValue>
+            </Attribute>
+            <Attribute Name="http://schemas.microsoft.com/claims/authnmethodsreferences">
+                <AttributeValue>urn:oasis:names:tc:SAML:2.0:ac:classes:PasswordProtectedTransport</AttributeValue>
+            </Attribute>
+        </AttributeStatement>
+        <AuthnStatement AuthnInstant="2020-06-07T14:23:47.410Z" SessionIndex="_f2821b3a-6c47-41c1-8993-7028be023a00">
+            <AuthnContext>
+                <AuthnContextClassRef>urn:oasis:names:tc:SAML:2.0:ac:classes:PasswordProtectedTransport</AuthnContextClassRef>
+            </AuthnContext>
+        </AuthnStatement>
+    </Assertion>
+</samlp:Response>
