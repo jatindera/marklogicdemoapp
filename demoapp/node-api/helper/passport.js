@@ -1,22 +1,17 @@
-const jwtSecret = require('./jwtConfig');
 const passport = require('passport');
 const SamlStrategy = require('passport-saml').Strategy;
 const JWTstrategy = require('passport-jwt').Strategy;
 const ExtractJWT = require('passport-jwt').ExtractJwt;
+require('dotenv').config();
+const fs = require('fs');
+var user = {};
 
-var users = [];
-
-function findByEmail(email, fn) {
-    console.log("inside find by email............");
-    for (var i = 0, len = users.length; i < len; i++) {
-        var user = users[i];
-        if (user.email === email) {
-            console.log(user.email);
-            return fn(null, user);
-        }
-        return fn(null, user);
+function configure(profile, fn) {
+    user = {
+        assertionxml: profile.getAssertionXml(),
+        email: profile.nameID
     }
-    return fn(null, null);
+    return fn(null, user);
 }
 
 passport.serializeUser((user, done) => {
@@ -32,25 +27,23 @@ passport.use(new SamlStrategy(
     {
         path: '/app/login/callback',
         entryPoint: 'https://login.microsoftonline.com/c643d250-0dd7-416f-889e-a93f0e4ef800/saml2',
-        issuer: '27757783-5217-479e-b2f6-5e7b2b98d652'
+        issuer: '27757783-5217-479e-b2f6-5e7b2b98d652',
+        cert: fs.readFileSync('./certs/appserver-water-64.cer', 'utf-8')
     },
     function (profile, done) {
-        console.log(profile)
-        findByEmail(profile.email, function (err, user) {
+        configure(profile, function (err, user) {
             if (err) {
                 console.log("Error.............");
                 return done(err);
             }
-            console.log("Returning..............");
-            console.log(profile.nameID);
-            return done(null, profile.nameID);
+            return done(null, user);
         });
     })
 );
 
 const opts = {
     jwtFromRequest: ExtractJWT.fromAuthHeaderWithScheme('JWT'),
-    secretOrKey: jwtSecret.secret,
+    secretOrKey: process.env.JWT_SECRET,
 };
 
 passport.use(

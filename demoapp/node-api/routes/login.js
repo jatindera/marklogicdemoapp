@@ -1,13 +1,10 @@
 const express = require('express');
 const router = express.Router();
-const jwt = require("jsonwebtoken");
-const jwtSecret = require('./../config/jwtConfig');
-const decoder = require('saml-encoder-decoder-js');
+var signToken = require('../helper/signToken');
+var userADGroups = require('../helper/userADGroups');
+const assignRoles = require('../helper/assignRoles');
 const bodyParser = require('body-parser')
 const passport = require('passport');
-parseString = require("xml2js").parseString,
-stripPrefix = require("xml2js").processors.stripPrefix;
-const expiration = process.env.DB_ENV === 'testing' ? 100 : '24h';
 
 
 router.get('/',
@@ -22,29 +19,29 @@ router.post('/callback',
   passport.authenticate('saml', { failureRedirect: '/', failureFlash: true }),
   (req, res) => {
     const samlToken = req.body.SAMLResponse;
-    console.log(samlToken);
-    decoder.decodeSamlPost(samlToken, (err, samlToken) => {
-      if (err) {
-        throw new Error(err);
-      } else {
-        parseString(samlToken, { tagNameProcessors: [stripPrefix] }, function (err, result) {
-          if (err) {
-            throw err;
-          } else {
-            //sign token
-            token = jwt.sign({ id: "nameID", samlToken: samlToken }, jwtSecret.secret, {
-              expiresIn: expiration //other configuration options
-            });
-            console.log(token);
-          }
-        });
-      }
-    })
-
+    if(samlToken===null || samlToken===""){
+      res.status(401).send('Not a valid SAML Token. Please contact admin.');
+    }
+    // console.log(req.user);
+    var user = req.user;
+    var assertionToken = req.user.assertionxml;
+    userADGroups = userADGroups(assertionToken);
+    if(userADGroups.length<=0){
+      res.status(401).send('User is not part of any AD group. Please contact admin.');
+      return;
+    }
+    var userLevel = assignRoles(userADGroups);
+    if(userLevel<=0){
+      res.status(401).send('User is not part of any App specific AD group. Please contact admin.');
+      return;
+    }
+    user.userADGroups = userADGroups;
+    user.samlToken = samlToken;
+    user.role = userLevel;
+    var signedToken = signToken(user);
+    // console.log(signedToken);
     res.redirect('/app');
   }
 );
-
-
 
 module.exports = router;

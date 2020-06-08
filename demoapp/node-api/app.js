@@ -9,8 +9,9 @@ const usersRouter = require('./routes/users');
 const loginRouter = require('./routes/login');
 const logoutRouter = require('./routes/logout');
 const searchRouter = require('./routes/search');
+const errorRouter = require('./routes/error');
 const cors = require('cors');
-require('./config/passport');
+require('./helper/passport');
 const express = require('express');
 const app = express();
 
@@ -40,5 +41,6 @@ app.use('/app/users', usersRouter);
 app.use('/app/login', loginRouter);
 app.use('/app/logout', logoutRouter);
 app.use('/app/search', searchRouter);
+app.use('/app/error', errorRouter);
 
 module.exports = app;
